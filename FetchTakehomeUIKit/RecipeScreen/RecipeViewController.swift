@@ -7,10 +7,26 @@
 
 import UIKit
 
-class RecipeViewController: UIViewController {
+protocol RecipeViewControllable: UIViewController {
+    
+}
+
+class RecipeViewController: UIViewController, RecipeViewControllable {
     
     var label: UILabel!
+    
+    var presenter: RecipePresentable
+    
+    init(presenter: RecipePresentable) {
+        self.presenter = presenter
 
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
