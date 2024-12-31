@@ -19,8 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let myScene = (scene as? UIWindowScene) else { return }
         otherWindow = UIWindow(windowScene: myScene)
-        let recipeViewController = RecipeViewController()
-        otherWindow?.rootViewController = recipeViewController
+        let recipeViewController = RecipePresenter.module()
+        let navigationViewController = UINavigationController(rootViewController: recipeViewController)
+
+        otherWindow?.rootViewController = navigationViewController
         otherWindow?.makeKeyAndVisible()
     }
 

@@ -58,11 +58,6 @@
 			path = FetchTakehomeUIKitTests;
 			sourceTree = "<group>";
 		};
-		DB206E032D0CB541002E17B7 /* FetchTakehomeUIKitUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FetchTakehomeUIKitUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +91,6 @@
 				DB206E142D0CB54C002E17B7 /* README.txt */,
 				DB206DE22D0CB53F002E17B7 /* FetchTakehomeUIKit */,
 				DB206DF92D0CB541002E17B7 /* FetchTakehomeUIKitTests */,
-				DB206E032D0CB541002E17B7 /* FetchTakehomeUIKitUITests */,
 				DB206DE12D0CB53F002E17B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,9 +165,6 @@
 			);
 			dependencies = (
 				DB206E022D0CB541002E17B7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				DB206E032D0CB541002E17B7 /* FetchTakehomeUIKitUITests */,
 			);
 			name = FetchTakehomeUIKitUITests;
 			packageProductDependencies = (

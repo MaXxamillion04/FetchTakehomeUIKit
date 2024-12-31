@@ -7,28 +7,41 @@
 
 import UIKit
 
-//Our images service is meant to handle cacheing of images, as well as fetching from remote in event of a cache miss
+// Images service is meant to handle cacheing of images, as well as fetching from remote in event of a cache miss
 protocol ImagesServiceProtocol {
-    func fetchImageFromUrlString(_ urlString: String) -> Result<UIImage, ImagesError>
+    func fetchImageFromUrlString(_ urlString: String) async throws -> UIImage?
 }
 
-class ImagesService: ImagesServiceProtocol {
+
+class ImagesService: ImagesServiceProtocol, @unchecked Sendable {
     static let shared: ImagesService = .init()
     
-    var cache: [String: UIImage]
-    var networkManager: NetworkManagerProtocol
+    var cache = NSCache<NSString, UIImage>()
+    var networkService: NetworkServiceProtocol
     
-    init() {
+    init(networkService: NetworkServiceProtocol = NetworkService.shared) {
+        self.networkService = networkService
+    }
+    
+    func fetchImageFromUrlString(_ urlString: String) async throws -> UIImage? {
+        if let cacheImage = cache.object(forKey: urlString as NSString) {
+            return cacheImage
+        }
         
+        do {
+            let image = try await networkService.fetchImageFromUrlString(urlString)
+            if let image {
+                cache.setObject(image, forKey: urlString as NSString)
+            }
+            
+            return image
+        } catch {
+            throw ImagesError.otherError
+        }
     }
-    
-    func fetchImageFromUrlString(_ urlString: String) -> Result<UIImage, ImagesError> {
-        <#code#>
-    }
-    
-    
 }
 
 enum ImagesError: Error {
-    
+    case noImage
+    case otherError
 }

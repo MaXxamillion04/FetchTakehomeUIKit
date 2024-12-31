@@ -5,7 +5,7 @@
 //  Created by MaXx Speller on 12/17/24.
 //
 
-struct RecipeEntity: Decodable {
+struct RecipeEntity: Decodable, Equatable, Hashable {
     let cuisine: String
     let name: String
     let photo_url_large: String?
