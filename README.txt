@@ -20,6 +20,7 @@ This project took me nearly 8 hours, about one working day's equivalent of time.
 
 ### Trade-offs and Decisions: Did you make any significant trade-offs in your approach?
 The decision to use VIP architecture and separate out all of my services made for a significant tradeoff in terms of time and organization, since I could have gone with simpler organization for such a simple project.
+I also would have added unit test coverage to the Presenter in the Recipe VIP.
 
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
 The weakest part would be the polish on the UI itself. Once I had finished the VIP, network layer, image cacheing, gotten the UI to meet the requirements, and finished the unit tests, I really couldn't commit any extra time to adding bells and whistles to the UI. I made sure it looked alright on an ipad and a small and large iphone and called it good. It's just a happy coincidence that the approach I took also looks alright in landscape, or I would have simply disabled the orientation for the project.
